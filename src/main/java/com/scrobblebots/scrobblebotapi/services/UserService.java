@@ -19,8 +19,9 @@ public class UserService implements com.scrobblebots.scrobblebotapi.interfaces.U
     }
 
     @Override
-    public void AddUser(User user) {
+    public User AddUser(User user) {
         userRepository.save(user);
+        return user;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class UserService implements com.scrobblebots.scrobblebotapi.interfaces.U
     }
 
     @Override
-    public void UpdateUser(User user) {
+    public User UpdateUser(User user) {
         Optional<User> employee = userRepository.findById(user.getDiscordUsername());
 
         if(employee.isPresent())
@@ -39,18 +40,21 @@ public class UserService implements com.scrobblebots.scrobblebotapi.interfaces.U
             newEntity.setLastFmUsername(user.getLastFmUsername());
 
             userRepository.save(newEntity);
+            return newEntity;
         }
+        return null;
     }
 
     @Override
-    public void DeleteUser(User user) throws RecordNotFoundException {
+    public Boolean DeleteUser(User user)  {
         Optional<User> employee = userRepository.findById(user.getDiscordUsername());
 
         if(employee.isPresent())
         {
             userRepository.deleteById(user.getDiscordUsername());
+            return true;
         } else {
-            throw new RecordNotFoundException("No employee record exist for given id");
+            return false;
         }
     }
 }

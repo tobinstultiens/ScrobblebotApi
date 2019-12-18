@@ -4,8 +4,8 @@ import com.scrobblebots.scrobblebotapi.exceptions.RecordNotFoundException;
 import com.scrobblebots.scrobblebotapi.models.User;
 
 public interface UserService {
-    void AddUser(User user);
+    User AddUser(User user);
     User GetUser(String username);
-    void UpdateUser(User user);
-    void DeleteUser(User user) throws RecordNotFoundException;
+    User UpdateUser(User user);
+    Boolean DeleteUser(User user) throws RecordNotFoundException;
 }
