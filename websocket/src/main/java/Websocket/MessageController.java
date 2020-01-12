@@ -9,7 +9,7 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class MessageController {
     @MessageMapping("/message")
-    @SendTo("/client")
+    @SendTo("/client/message")
     public MessageModel greeting(MessageModel message)   {
         return message;
     }
