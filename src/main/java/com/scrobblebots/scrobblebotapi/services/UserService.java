@@ -20,8 +20,7 @@ public class UserService implements com.scrobblebots.scrobblebotapi.interfaces.U
 
     @Override
     public User AddUser(User user) {
-        userRepository.save(user);
-        return user;
+        return userRepository.save(user);
     }
 
     @Override

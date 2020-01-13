@@ -4,6 +4,7 @@ package com.scrobblebots.scrobblebotapi.controllers;
 import com.scrobblebots.scrobblebotapi.exceptions.RecordNotFoundException;
 import com.scrobblebots.scrobblebotapi.interfaces.UserService;
 import com.scrobblebots.scrobblebotapi.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
